@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
-#include "Parcial2_CisneroCharacter.generated.h"
+#include "PEV2_TF_LeafRaceCharacter.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -19,7 +19,7 @@ DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
  *  Implements a controllable orbiting camera
  */
 UCLASS(abstract)
-class AParcial2_CisneroCharacter : public ACharacter
+class APEV2_TF_LeafRaceCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -52,7 +52,7 @@ protected:
 public:
 
 	/** Constructor */
-	AParcial2_CisneroCharacter();	
+	APEV2_TF_LeafRaceCharacter();	
 
 protected:
 

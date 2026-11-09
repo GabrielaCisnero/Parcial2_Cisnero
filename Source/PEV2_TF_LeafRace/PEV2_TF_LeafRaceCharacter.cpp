@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "Parcial2_CisneroCharacter.h"
+#include "PEV2_TF_LeafRaceCharacter.h"
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -10,9 +10,9 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
-#include "Parcial2_Cisnero.h"
+#include "PEV2_TF_LeafRace.h"
 
-AParcial2_CisneroCharacter::AParcial2_CisneroCharacter()
+APEV2_TF_LeafRaceCharacter::APEV2_TF_LeafRaceCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -50,7 +50,7 @@ AParcial2_CisneroCharacter::AParcial2_CisneroCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void AParcial2_CisneroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void APEV2_TF_LeafRaceCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
@@ -60,19 +60,19 @@ void AParcial2_CisneroCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AParcial2_CisneroCharacter::Move);
-		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AParcial2_CisneroCharacter::Look);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &APEV2_TF_LeafRaceCharacter::Move);
+		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &APEV2_TF_LeafRaceCharacter::Look);
 
 		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AParcial2_CisneroCharacter::Look);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &APEV2_TF_LeafRaceCharacter::Look);
 	}
 	else
 	{
-		UE_LOG(LogParcial2_Cisnero, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+		UE_LOG(LogPEV2_TF_LeafRace, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
 }
 
-void AParcial2_CisneroCharacter::Move(const FInputActionValue& Value)
+void APEV2_TF_LeafRaceCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -81,7 +81,7 @@ void AParcial2_CisneroCharacter::Move(const FInputActionValue& Value)
 	DoMove(MovementVector.X, MovementVector.Y);
 }
 
-void AParcial2_CisneroCharacter::Look(const FInputActionValue& Value)
+void APEV2_TF_LeafRaceCharacter::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
@@ -90,7 +90,7 @@ void AParcial2_CisneroCharacter::Look(const FInputActionValue& Value)
 	DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
-void AParcial2_CisneroCharacter::DoMove(float Right, float Forward)
+void APEV2_TF_LeafRaceCharacter::DoMove(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
@@ -110,7 +110,7 @@ void AParcial2_CisneroCharacter::DoMove(float Right, float Forward)
 	}
 }
 
-void AParcial2_CisneroCharacter::DoLook(float Yaw, float Pitch)
+void APEV2_TF_LeafRaceCharacter::DoLook(float Yaw, float Pitch)
 {
 	if (GetController() != nullptr)
 	{
@@ -120,13 +120,13 @@ void AParcial2_CisneroCharacter::DoLook(float Yaw, float Pitch)
 	}
 }
 
-void AParcial2_CisneroCharacter::DoJumpStart()
+void APEV2_TF_LeafRaceCharacter::DoJumpStart()
 {
 	// signal the character to jump
 	Jump();
 }
 
-void AParcial2_CisneroCharacter::DoJumpEnd()
+void APEV2_TF_LeafRaceCharacter::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();

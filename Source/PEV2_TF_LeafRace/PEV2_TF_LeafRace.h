@@ -5,4 +5,4 @@
 #include "CoreMinimal.h"
 
 /** Main log category used across the project */
-DECLARE_LOG_CATEGORY_EXTERN(LogParcial2_Cisnero, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogPEV2_TF_LeafRace, Log, All);

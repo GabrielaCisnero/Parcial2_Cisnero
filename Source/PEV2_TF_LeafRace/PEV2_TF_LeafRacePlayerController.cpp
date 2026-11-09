@@ -1,15 +1,15 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 
-#include "Parcial2_CisneroPlayerController.h"
+#include "PEV2_TF_LeafRacePlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "Engine/LocalPlayer.h"
 #include "InputMappingContext.h"
 #include "Blueprint/UserWidget.h"
-#include "Parcial2_Cisnero.h"
+#include "PEV2_TF_LeafRace.h"
 #include "Widgets/Input/SVirtualJoystick.h"
 
-void AParcial2_CisneroPlayerController::BeginPlay()
+void APEV2_TF_LeafRacePlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -26,14 +26,14 @@ void AParcial2_CisneroPlayerController::BeginPlay()
 
 		} else {
 
-			UE_LOG(LogParcial2_Cisnero, Error, TEXT("Could not spawn mobile controls widget."));
+			UE_LOG(LogPEV2_TF_LeafRace, Error, TEXT("Could not spawn mobile controls widget."));
 
 		}
 
 	}
 }
 
-void AParcial2_CisneroPlayerController::SetupInputComponent()
+void APEV2_TF_LeafRacePlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 

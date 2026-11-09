@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "Parcial2_CisneroPlayerController.generated.h"
+#include "PEV2_TF_LeafRacePlayerController.generated.h"
 
 class UInputMappingContext;
 class UUserWidget;
@@ -14,7 +14,7 @@ class UUserWidget;
  *  Manages input mappings
  */
 UCLASS(abstract)
-class AParcial2_CisneroPlayerController : public APlayerController
+class APEV2_TF_LeafRacePlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	

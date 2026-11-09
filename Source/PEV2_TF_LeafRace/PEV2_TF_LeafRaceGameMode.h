@@ -4,20 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "Parcial2_CisneroGameMode.generated.h"
+#include "PEV2_TF_LeafRaceGameMode.generated.h"
 
 /**
  *  Simple GameMode for a third person game
  */
 UCLASS(abstract)
-class AParcial2_CisneroGameMode : public AGameModeBase
+class APEV2_TF_LeafRaceGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
 	
 	/** Constructor */
-	AParcial2_CisneroGameMode();
+	APEV2_TF_LeafRaceGameMode();
 };
 
 

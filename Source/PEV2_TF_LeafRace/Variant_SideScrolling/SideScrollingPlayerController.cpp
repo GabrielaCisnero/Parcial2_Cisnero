@@ -10,7 +10,7 @@
 #include "Engine/LocalPlayer.h"
 #include "Engine/World.h"
 #include "Blueprint/UserWidget.h"
-#include "Parcial2_Cisnero.h"
+#include "PEV2_TF_LeafRace.h"
 #include "Widgets/Input/SVirtualJoystick.h"
 
 void ASideScrollingPlayerController::BeginPlay()
@@ -30,7 +30,7 @@ void ASideScrollingPlayerController::BeginPlay()
 
 		} else {
 
-			UE_LOG(LogParcial2_Cisnero, Error, TEXT("Could not spawn mobile controls widget."));
+			UE_LOG(LogPEV2_TF_LeafRace, Error, TEXT("Could not spawn mobile controls widget."));
 
 		}
 

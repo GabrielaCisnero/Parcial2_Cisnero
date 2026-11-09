@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class Parcial2_CisneroEditorTarget : TargetRules
+public class PEV2_TF_LeafRaceEditorTarget : TargetRules
 {
-	public Parcial2_CisneroEditorTarget(TargetInfo Target) : base(Target)
+	public PEV2_TF_LeafRaceEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_6;
-		ExtraModuleNames.Add("Parcial2_Cisnero");
+		ExtraModuleNames.Add("PEV2_TF_LeafRace");
 	}
 }
