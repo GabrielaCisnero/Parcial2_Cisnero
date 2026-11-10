@@ -20,8 +20,7 @@ public class PEV2_TF_LeafRace : ModuleRules
 			"UMG",
 			"Slate"
 		});
-
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PublicDependencyModuleNames.AddRange(new string[] { "UMG", "Slate", "SlateCore", "Niagara" });
 
 		PublicIncludePaths.AddRange(new string[] {
 			"PEV2_TF_LeafRace",
