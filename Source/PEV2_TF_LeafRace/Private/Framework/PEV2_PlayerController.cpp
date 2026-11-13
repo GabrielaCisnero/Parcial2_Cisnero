@@ -25,7 +25,7 @@ void APEV2_PlayerController::Client_ShowEndScreen_Implementation(EPEV2Team Winne
 	bIsDraw = (Winner == EPEV2Team::None);
 	bLocalTeamWon = PS && !bIsDraw && PS->Team == Winner;
 
-	// Los datos se setean ANTES de crear el widget para que su Construct ya los lea.
+	// Los datos se setean antes de crear el widget para que su Construct ya los lea.
 	if (EndScreenClass && !EndScreenWidget)
 	{
 		EndScreenWidget = CreateWidget<UUserWidget>(this, EndScreenClass);

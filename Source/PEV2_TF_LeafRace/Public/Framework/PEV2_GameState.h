@@ -50,7 +50,7 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Leaf Race")
 	int32 GetLeaves(EPEV2Team Team) const;
 
-	// --- Solo servidor ---
+	// Solo servidor
 	void ModifyLeaves(EPEV2Team Team, int32 Delta);
 	void SetMatchState(EPEV2MatchState NewState, EPEV2Team Winner = EPEV2Team::None);
 

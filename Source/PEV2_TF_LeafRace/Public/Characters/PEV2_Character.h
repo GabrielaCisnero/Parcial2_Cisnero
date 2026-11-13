@@ -29,22 +29,22 @@ public:
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
 
-	// ---------- Componentes ----------
+	// Componentes
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<USpringArmComponent> CameraBoom;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	TObjectPtr<UCameraComponent> FollowCamera;
 
-	/** Esfera de interaccion: detecta hojas y bases cercanas. */
+	/** Detecta hojas y bases cercanas. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
 	TObjectPtr<USphereComponent> InteractSphere;
 
-	/** Hoja visible sobre la cabeza cuando el jugador la lleva. Asignar mesh en el BP. */
+	/** Hoja visible sobre la cabeza cuando el jugador la lleva. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
 	TObjectPtr<UStaticMeshComponent> LeafVisual;
 
-	// ---------- Input (se asignan en BP_Character) ----------
+	//Input
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputMappingContext> DefaultMappingContext;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
@@ -56,18 +56,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input")
 	TObjectPtr<UInputAction> InteractAction;
 
-	// ---------- Efectos (se asignan en BP_Character) ----------
+	//Efectos
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FX")
 	TObjectPtr<UNiagaraSystem> InteractFX;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FX")
 	TObjectPtr<USoundBase> InteractSound;
 
-	// ---------- Estado replicado ----------
-	/** REPNOTIFY: true si lleva una hoja. Muestra/oculta la hoja sobre la cabeza en todos los clientes. */
+	// Estado replicado
+	/** REPNOTIFY: true si lleva una hoja. Muestra/oculta la hoja sobre la cabeza en todos los jugadores. */
 	UPROPERTY(ReplicatedUsing = OnRep_HasLeaf, BlueprintReadOnly, Category = "Leaf Race")
 	bool bHasLeaf = false;
 
-	// ---------- API para HUD / BP ----------
+	// API para HUD / BP 
 	/** Accion disponible ahora mismo (recoger / entregar / robar) segun lo que tenga cerca. */
 	UFUNCTION(BlueprintPure, Category = "Leaf Race")
 	EPEV2InteractAction GetCurrentAction(AActor*& OutTarget) const;
@@ -82,12 +82,12 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Leaf Race")
 	void BP_OnTeamChanged(EPEV2Team NewTeam);
 
-	// ---------- RPCs ----------
+	// RPCs 
 	/** SERVER RPC: el cliente pide interactuar; el servidor valida y ejecuta. */
 	UFUNCTION(Server, Reliable)
 	void Server_Interact();
 
-	/** NETMULTICAST RPC: efecto visual/sonoro para todos los clientes. */
+	/** NETMULTICAST RPC: efecto visual/sonoro para todos los jugadores. */
 	UFUNCTION(NetMulticast, Unreliable)
 	void Multicast_PlayInteractEffect(FVector Location);
 

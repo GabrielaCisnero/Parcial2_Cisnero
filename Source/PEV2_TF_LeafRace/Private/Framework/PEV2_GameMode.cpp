@@ -32,7 +32,7 @@ void APEV2_GameMode::BeginPlay()
 
 void APEV2_GameMode::PostLogin(APlayerController* NewPlayer)
 {
-	// Asignamos el equipo ANTES del Super: el Super spawnea el pawn y necesita saber el equipo.
+	// el Super spawnea el pawn y necesita saber el equipo.
 	if (APEV2_PlayerState* PS = NewPlayer ? NewPlayer->GetPlayerState<APEV2_PlayerState>() : nullptr)
 	{
 		int32 Red = 0, Blue = 0;
@@ -57,8 +57,9 @@ AActor* APEV2_GameMode::ChoosePlayerStart_Implementation(AController* Player)
 {
 	const APEV2_PlayerState* PS = Player ? Player->GetPlayerState<APEV2_PlayerState>() : nullptr;
 	if (PS && PS->Team != EPEV2Team::None)
+		UE_LOG(LogTemp, Warning, TEXT("ChoosePlayerStart: equipo=%d"), PS ? (int32)PS->Team : -1);
 	{
-		// En el editor: seleccionar cada PlayerStart y ponerle Player Start Tag = "Red" o "Blue".
+		// seleccionar cada PlayerStart, Player Start Tag = "Red" o "Blue".
 		const FName Tag = (PS->Team == EPEV2Team::Red) ? FName("Red") : FName("Blue");
 		TArray<APlayerStart*> Starts;
 		for (TActorIterator<APlayerStart> It(GetWorld()); It; ++It)

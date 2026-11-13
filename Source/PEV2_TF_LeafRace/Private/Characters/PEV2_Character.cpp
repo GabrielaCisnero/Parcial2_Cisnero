@@ -63,7 +63,7 @@ void APEV2_Character::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(APEV2_Character, bHasLeaf);
 }
 
-// ------------------------------------------------------------------ Input
+// Input
 void APEV2_Character::PawnClientRestart()
 {
 	Super::PawnClientRestart();
@@ -117,11 +117,11 @@ void APEV2_Character::Look(const FInputActionValue& Value)
 
 void APEV2_Character::OnInteractPressed()
 {
-	// El cliente SOLO pide; el servidor decide.
+	// El cliente solo pide; el servidor decide.
 	Server_Interact();
 }
 
-// ------------------------------------------------------------------ Equipo
+// Equipo
 void APEV2_Character::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
@@ -145,7 +145,7 @@ void APEV2_Character::RefreshTeamVisuals()
 	}
 }
 
-// ------------------------------------------------------------------ Hoja (RepNotify)
+// Hoja (RepNotify)
 void APEV2_Character::OnRep_HasLeaf()
 {
 	UpdateLeafVisual();
@@ -160,10 +160,10 @@ void APEV2_Character::SetHasLeaf(bool bNewValue)
 {
 	if (!HasAuthority()) return;
 	bHasLeaf = bNewValue;
-	OnRep_HasLeaf(); // el servidor/host tambien debe actualizar su visual
+	OnRep_HasLeaf(); // el host tambien debe actualizar su visual
 }
 
-// ------------------------------------------------------------------ Interaccion
+// Interaccion
 EPEV2InteractAction APEV2_Character::GetCurrentAction(AActor*& OutTarget) const
 {
 	OutTarget = nullptr;
@@ -223,7 +223,7 @@ FText APEV2_Character::GetInteractionHint() const
 
 void APEV2_Character::Server_Interact_Implementation()
 {
-	// Se ejecuta SOLO en el servidor: toda la validacion se hace aca.
+	// Se ejecuta solo en el servidor, la validacion se hace aca.
 	APEV2_GameMode* GM = GetWorld()->GetAuthGameMode<APEV2_GameMode>();
 	APEV2_PlayerState* PS = GetPlayerState<APEV2_PlayerState>();
 	APEV2_PlayerController* PC = Cast<APEV2_PlayerController>(GetController());

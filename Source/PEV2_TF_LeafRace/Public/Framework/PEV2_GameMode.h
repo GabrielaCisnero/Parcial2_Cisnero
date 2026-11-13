@@ -16,8 +16,9 @@ public:
 	virtual void BeginPlay() override;
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
-
-	/** Duracion de la partida en segundos (5 min segun la entrega). */
+	virtual bool ShouldSpawnAtStartSpot(AController* Player) override { return false; }
+	
+	/** Duracion de la partida. */
 	UPROPERTY(EditDefaultsOnly, Category = "Leaf Race")
 	int32 MatchDuration = 300;
 
@@ -29,7 +30,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Leaf Race")
 	int32 TargetLeaves = 15;
 
-	// --- Llamados por los personajes (solo servidor) ---
+	//Llamados por los personajes (solo servidor)
 	void AddLeafToTeam(EPEV2Team Team);
 	bool TryStealLeaf(EPEV2Team VictimTeam);
 
